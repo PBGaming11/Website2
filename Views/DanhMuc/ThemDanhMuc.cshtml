@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "ThemDanhMuc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model DanhMuc
+<div class="container contain">
+    <form class="form-group" method="post">
+        <div>
+            <label asp-for="Namedanhmuc">Tên Danh mục</label>
+            <input asp-for="Namedanhmuc" class="form-control" />
+            <span asp-validation-for="Namedanhmuc" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="imgDanhMuc">Hình Ảnh Danh Mục</label>
+            <input type="file" id="imageFile" class="form-control" />
+            <input type="hidden" asp-for="imgDanhMuc" id="imageBase64" />
+        </div>
+        <!-- Hidden Description field to set DateTime -->
+        <div style="display: none;">
+            <input asp-for="Description" class="form-control" value="@DateTime.Now" />
+        </div>
+        <button type="submit" class="btn btn-primary">Thêm danh mục</button>
+    </form>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        document.getElementById('imageFile').addEventListener('change', function () {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var base64String = e.target.result.split(',')[1];
+                    document.getElementById('imageBase64').value = base64String;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+}
+
+

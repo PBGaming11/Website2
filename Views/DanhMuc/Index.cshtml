@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container contain">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên thể loại</th>
+                <th>Ngày thêm vào</th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var danhmuc in ViewBag.danhmuc) // vòng lặp hiển thị mọi thứ trong DanhMuc từ database
+            {
+                <tr>
+                    <td>@danhmuc.Namedanhmuc</td>
+                    <td>@danhmuc.Description</td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="SuaDanhMuc" asp-route-id="@danhmuc.Id">Sửa</a>
+                        <a class="btn btn-danger" asp-action="XoaDanhMuc" asp-route-id="@danhmuc.Id">Xoá</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <a class="btn btn-primary" asp-action="ThemDanhMuc">Thêm Danh Mục</a> <!--chuyển đến trang ThemDanhMuc-->
+</div>
+

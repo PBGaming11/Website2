@@ -1,0 +1,70 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Trang cá nhân";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+<style>
+    .form-floatingr {
+        margin-bottom: 1rem;
+    }
+
+    .form-labels {
+        font-weight: bold;
+    }
+
+    #update-profile-button {
+        margin-top: 1rem;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .btn-lg {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        border-radius: 0.3rem;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+
+    .col-md-6 {
+        max-width: 500px;
+    }
+
+    .tos {
+        text-align: center;
+    }
+</style>
+
+<h3 class="tos">@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="col-md-6">
+        <form id="profile-formr" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floatingr">
+                <label asp-for="Username" class="form-labels">Tên đăng nhập</label>
+                <input asp-for="Username" class="form-controls" disabled />
+            </div>
+            <div class="form-floatingr">
+                <label asp-for="Input.PhoneNumber" class="form-labels">Số điện thoại</label>
+                <input asp-for="Input.PhoneNumber" class="form-controls" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Lưu</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

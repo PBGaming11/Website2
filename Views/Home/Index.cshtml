@@ -1,0 +1,396 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="@Url.Action("Index", "Shop")" method="get">
+                            <div class="hero__search__categories">
+                                Tìm kiếm
+                            </div>
+                            <input type="text" name="searchQuery" placeholder="Nhập từ khóa tìm kiếm">
+                            <button type="submit" class="site-btn"><i class='bx bx-search'></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+<!-- Categories Section Begin -->
+<section class="categories">
+    <div class="container">
+        <div class="row">
+            <vc:danh-muc-home></vc:danh-muc-home>
+        </div>
+    </div>
+</section>
+<section class="banner-top">
+    <div class="khung">
+        <img src="~/img/banne1.png" />
+    </div>
+</section>
+<!-- Categories Section End -->
+<!-- Featured Section Begin -->
+<section class="featured spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Sản phẩm nổi bật</h2>
+                </div>
+                <div class="featured__controls">
+                    <ul>
+                        <li class="active" data-filter="*">Tất cả</li>
+                        <li data-filter=".giaydep">Giày,Dép</li>
+                        <li data-filter=".aonam">Quần áo nam</li>
+                        <li data-filter=".aonu">Quần áo nữ</li>
+                        <li data-filter=".aocon">Quần áo trẻ em</li>
+                        <li data-filter=".phukien">Phụ kiện</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row featured__filter">
+            <div class="col-lg-3 col-md-4 col-sm-6 mix giaydep">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg">
+                        <a asp-action="Index" asp-controller="product_detail"><img src="~/img/giay.jpg" /></a>
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class='bx bxs-heart-circle'></i></a></li>
+                            <li><a href="#"><i class='bx bx-cart'></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a asp-action="Index" asp-controller="product_detail">Giày thể thao</a></h6>
+                        <h5>300,000 Đ</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix aonam">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg">
+                        <a asp-action="Index" asp-controller="product_detail"><img src="~/img/ao-nam.jpg" /></a>
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class='bx bxs-heart-circle'></i></a></li>
+                            <li><a href="#"><i class='bx bx-cart'></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a asp-action="Index" asp-controller="product_detail">Quần áo nam</a></h6>
+                        <h5>300,000 Đ</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix aonu">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg">
+                        <a asp-action="Index" asp-controller="product_detail"><img src="~/img/ao-nu.jpg" /></a>
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class='bx bxs-heart-circle'></i></a></li>
+                            <li><a href="#"><i class='bx bx-cart'></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a asp-action="Index" asp-controller="product_detail">Quần áo nữ</a></h6>
+                        <h5>300,000 Đ</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix aocon">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg">
+                        <img src="~/img/trecon.jpg" />
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class='bx bxs-heart-circle'></i></a></li>
+                            <li><a href="#"><i class='bx bx-cart'></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a asp-action="Index" asp-controller="product_detail">Quần áo trẻ em</a></h6>
+                        <h5>300,000 Đ</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix phukien">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg">
+                        <img src="~/img/pkthoitrang.jpg" />
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class='bx bxs-heart-circle'></i></a></li>
+                            <li><a href="#"><i class='bx bx-cart'></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a asp-action="Index" asp-controller="product_detail">Phụ kiện</a></h6>
+                        <h5>300,000 Đ</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix giaydep">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg">
+                        <a asp-action="Index" asp-controller="product_detail"><img src="~/img/giay.jpg" /></a>
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class='bx bxs-heart-circle'></i></a></li>
+                            <li><a href="#"><i class='bx bx-cart'></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Giày thể thao</a></h6>
+                        <h5>300,000 Đ</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix aonam">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg">
+                        <a asp-action="Index" asp-controller="product_detail"><img src="~/img/ao-nam.jpg" /></a>
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class='bx bxs-heart-circle'></i></a></li>
+                            <li><a href="#"><i class='bx bx-cart'></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a asp-action="Index" asp-controller="product_detail">Quần áo nam</a></h6>
+                        <h5>300,000 Đ</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix aonu">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg">
+                        <a asp-action="Index" asp-controller="product_detail"><img src="~/img/ao-nu.jpg" /></a>
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class='bx bxs-heart-circle'></i></a></li>
+                            <li><a href="#"><i class='bx bx-cart'></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a asp-action="Index" asp-controller="product_detail">Quần áo nữ</a></h6>
+                        <h5>300,000 Đ</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Featured Section End -->
+<!-- Banner Begin -->
+<div class="banner-bottom">
+    <div class="container">
+        <div class="khung">
+            <img src="~/img/banner2.jpg" />
+        </div>
+    </div>
+</div>
+<!-- Banner End -->
+<!-- Latest Product Section Begin -->
+<section class="latest-product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="latest-product__text">
+                    <h4>Mới nhất</h4>
+                    <div class="latest-product__slider owl-carousel">
+                        <div class="latest-prdouct__slider__item">
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/ao-nu.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo nữ</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/ao-nam.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo nam</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/pkthoitrang.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Phụ kiện</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="latest-prdouct__slider__item">
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/ao-nu.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo nữ</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/giay.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Giày thể thao</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/ao-nu.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo nữ</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="latest-product__text">
+                    <h4>Mua nhiều</h4>
+                    <div class="latest-product__slider owl-carousel">
+                        <div class="latest-prdouct__slider__item">
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/ao-nu.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo nữ</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/pkthoitrang.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Phụ kiện</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/ao-nam.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo nam</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="latest-prdouct__slider__item">
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/ao-nu.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo nữ</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/trecon.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo trẻ em</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/ao-nu.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo nữ</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="latest-product__text">
+                    <h4>Yêu thích</h4>
+                    <div class="latest-product__slider owl-carousel">
+                        <div class="latest-prdouct__slider__item">
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/ao-nam.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo nam</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/ao-nu.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo nữ</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/giay.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Giày thể thao</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="latest-prdouct__slider__item">
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/ao-nu.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo nữ</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/ao-nam.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo nam</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="~/img/trecon.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Áo trẻ em</h6>
+                                    <span>300,000 Đ</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Latest Product Section End -->

@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "XoaSanpham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model SanPham
+<div class="container">
+    <form method="post" asp-action="XacNHanXoa">
+        <!--gửi dữ liệu từ form đến XanNhanXoa-->
+        <input asp-for="IdSanPham" type="hidden" /> <!--đây là chỗ gửi idsanpham để biết cần sửa xoá idsanpham nào-->
+        <div class="form-group">
+            <label asp-for="TenSanPham">Tên Sản phẩm</label>
+            <input asp-for="TenSanPham" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="ImgDaiDien">Hình Ảnh Sản Phẩm</label>
+            <input type="file" id="imageFile" class="form-control" />
+            <input type="hidden" asp-for="ImgDaiDien" id="imageBase64" />
+        </div>
+        <div class="form-group">
+            <label asp-for="GiaSanpham">Giá Bán Sản Phẩm</label>
+            <input asp-for="GiaSanpham" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="GiamGia">Giá Giảm giá</label>
+            <input asp-for="GiamGia" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="MoTaSanPham">Mô Tả Sản PHẩm</label>
+            <textarea rows="3" cols="50" asp-for="MoTaSanPham"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="DanhmucId">Thuộc Danh Mục</label>
+            <select asp-for="DanhmucId" asp-items="@(new SelectList(ViewBag.DanhMucList, "Id", "Namedanhmuc"))" class="form-control">
+                <option value="">Chọn danh mục</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">xoá</button> <!--Chuyển dữ liệu qua mạng-->
+        <a asp-action="HienSanPham" class="btn btn-primary">Huỷ</a>  <!--chuyển trang đến trang HienSanPham-->
+    </form>
+</div>
+<!--mã hoá dữ liệu hình ảnh-->
+@section Scripts {
+    <script type="text/javascript">
+        document.getElementById('imageFile').addEventListener('change', function () {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var base64String = e.target.result.split(',')[1];
+                    document.getElementById('imageBase64').value = base64String;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+}
+

@@ -1,0 +1,48 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Đăng Nhập";
+}
+<div class="bodys">
+    <div class="containeras">
+        <h3 class="login-text">@ViewData["Title"]</h3>
+        <div class="identifys-form">
+            <form id="account" method="post">
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-dangers"></div>
+                <div class="form-floating">
+                    <span asp-validation-for="Input.Username" class="text-dangers"></span>
+                    <input asp-for="Input.Username" class="form-controls" autocomplete="username" aria-required="true" />
+                    <label asp-for="Input.Username" class="form-label">Tài khoản</label>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Input.Password" class="form-controls" autocomplete="current-password" aria-required="true" />
+                    <label asp-for="Input.Password" class="form-label">Mật khẩu</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" asp-for="Input.RememberMe" />
+                    <label class="form-check-label" asp-for="Input.RememberMe">
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+                <button id="registerSubmit" type="submit" class="btn btn-primary">Đăng nhập</button>
+                <div>
+                    <p class="nest">
+                        <a id="forgot-password" asp-page="./ForgotPassword">Quên mật khẩu?</a>
+                    </p>
+                    <p class="nest">
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Đăng ký</a>
+                    </p>
+                    <p class="nest">
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Gửi lại xác minh email</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
