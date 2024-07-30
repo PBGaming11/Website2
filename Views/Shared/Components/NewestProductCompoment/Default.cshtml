@@ -1,0 +1,15 @@
+﻿@model IEnumerable<SanPham>
+
+@foreach (var item in Model.Take(3))
+{
+    <a href="#" class="latest-product__item">
+        <div class="latest-product__item__pic">
+            <img src="data:image/png;base64,@item.ImgDaiDien" alt="@item.TenSanPham" />
+        </div>
+        <div class="latest-product__item__text">
+            <h6>@item.TenSanPham</h6>
+            <span class="price-displays">@item.GiamGia</span>
+        </div>
+    </a>
+}
+
