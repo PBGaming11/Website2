@@ -9,7 +9,7 @@
             <a asp-action="Index" asp-controller="Shop">Cửa hàng</a>
             @if (selectedCategory != null)
             {
-                <span>/ @selectedCategory.Namedanhmuc</span>
+                <a asp-action="Index" asp-controller="Shop" asp-route-categoryId="@selectedCategory.Id">/ @selectedCategory.Namedanhmuc</a> 
             }
         </div>
     </div>

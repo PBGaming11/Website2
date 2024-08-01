@@ -114,33 +114,20 @@ namespace Website.Controllers
             return View(sanpham);
         }
 
-        [HttpGet]
-        public IActionResult XoaSanpham(int id)
+        public IActionResult Delete(int id)
         {
-            if (id == 0)
-            {
-                return NotFound();
-            }
-            var sanpham = _db.sanpham.Find(id);
+            var sanpham = _db.sanpham.FirstOrDefault(sanpham => sanpham.IdSanPham == id);
             if (sanpham == null)
             {
                 return NotFound();
             }
-            ViewBag.DanhMucList = _db.danhmuc.ToList();
-            return View(sanpham);
-        }
-
-        [HttpPost]
-        public IActionResult XacNHanXoa(int id)
-        {
-            var sanphamToDelete = _db.sanpham.Find(id);
-            if (sanphamToDelete == null)
+            else
             {
-                return NotFound();
+                _db.sanpham.Remove(sanpham);
+                _db.SaveChanges();
             }
-            _db.sanpham.Remove(sanphamToDelete);
-            _db.SaveChanges();
             return RedirectToAction(nameof(HienSanPham));
         }
+
     }
 }

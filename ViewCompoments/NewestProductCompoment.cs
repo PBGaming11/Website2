@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Website.Data;
 
 namespace Website.ViewCompoments
@@ -13,8 +14,12 @@ namespace Website.ViewCompoments
         }
         public IViewComponentResult Invoke()
         {
-            var sanpham = _db.sanpham.ToList();
-            return View(sanpham);
+            var products = _db.sanpham.Include(p => p.danhmuc).ToList();
+
+            // Select 6 random products
+            var randomProducts = products.OrderBy(p => Guid.NewGuid()).Take(6);
+
+            return View(randomProducts);
         }
     }
 }

@@ -65,11 +65,10 @@
     ------------------------*/
     $(".categories__slider").owlCarousel({
         loop: true,
-        margin: 0,
-        items: 4,
+        margin: 10,
+        items: 6,
         dots: false,
         nav: true,
-        navText: ["<span class='bx bxs-left-arrow'><span/>", "<span class='bx bxs-right-arrow'><span/>"],
         animateOut: 'fadeOut',
         animateIn: 'fadeIn',
         smartSpeed: 1200,
@@ -94,8 +93,6 @@
             }
         }
     });
-
-
     $('.hero__categories__all').on('click', function(){
         $('.hero__categories ul').slideToggle(400);
     });
@@ -265,32 +262,25 @@
         $(this).addClass('active');
     });
     /*------------------
-        Magnific
-    --------------------*/
-    $('.image-popup').magnificPopup({
-        type: 'image'
-    });
-
-
-    $(".nice-scroll").niceScroll({
-        cursorborder: "",
-        cursorcolor: "#dddddd",
-        boxzoom: false,
-        cursorwidth: 5,
-        background: 'rgba(0, 0, 0, 0.2)',
-        cursorborderradius: 50,
-        horizrailenabled: false
-    });
-    /*------------------
         onTop
   --------------------*/
-    
-})(jQuery);
-document.addEventListener('DOMContentLoaded', () => {
-    const prices = document.querySelectorAll('.price-display');
-    prices.forEach(price => {
-        let priceText = price.textContent.trim();
-        let formattedPrice = priceText.replace('000 ', '').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' đ';
-        price.textContent = formattedPrice;
+    document.addEventListener('DOMContentLoaded', () => {
+        const prices = document.querySelectorAll('.price-display');
+        prices.forEach(price => {
+            let priceText = price.textContent.trim();
+            let priceValue = parseInt(priceText.replace(/\D/g, '')); // Remove any non-digit characters
+
+            if (priceValue >= 1000000) {
+                // Format as x.000.000
+                let millions = Math.floor(priceValue / 1000000);
+                let thousands = Math.floor((priceValue % 1000000) / 1000);
+                price.textContent = `${millions}.${thousands.toString().padStart(3, '0')}.000 đ`;
+            } else {
+                // Format as x.000
+                let thousands = priceValue / 1000;
+                price.textContent = `${thousands.toFixed(3).replace('.', '.')} đ`;
+            }
+        });
     });
-});
+})(jQuery);
+

@@ -70,7 +70,7 @@
                     @foreach (var item in Model)
                     {
                         <div class="col-lg-4 col-md-6 col-sm-6">
-                            <a href="@Url.Action("Details", "Shop", new { id = item.IdSanPham })">
+                            <a asp-action="Index" asp-controller="product_detail" asp-route-id="@item.IdSanPham">
                                 <div class="product__item click">
                                     <div class="product__item__pic position-relative">
                                         <!-- Sale Icon -->

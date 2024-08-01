@@ -1,7 +1,9 @@
-﻿
+﻿@model Website.Models.SanPham
+
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    var selectedCategory = ViewBag.SelectedCategory as DanhMuc;
+    var selectedProduct = ViewBag.SelectedProduct as SanPham;
+    ViewBag.Title = Model.TenSanPham;
 }
 
 <section class="hero">
@@ -25,19 +27,30 @@
         </div>
     </div>
 </section>
+
 <div class="breadcrumb-option">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 text-center">
                 <div class="breadcrumb__links">
-                    <a class="links_color" href="./index.html">Home</a>
-                    <a href="#">Women’s </a>
-                    <span>Essential structured blazer</span>
+                    <div class="breadcrumb__option" style="margin-left: 100px">
+                        <a asp-action="Index" asp-controller="Home">Trang chủ</a> /
+                        <a asp-action="Index" asp-controller="Shop">Cửa hàng</a>
+                        @if (selectedCategory != null)
+                        {
+                            <a asp-action="Index" asp-controller="Shop" asp-route-categoryId="@selectedCategory.Id">/ @selectedCategory.Namedanhmuc /</a>
+                        }
+                        @if (selectedProduct != null)
+                        {
+                            <span>@selectedProduct.TenSanPham</span>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <section class="product-details spad">
     <div class="container">
         <div class="row">
@@ -45,24 +58,24 @@
                 <div class="product__details__pic">
                     <div class="product__details__pic__left product__thumb nice-scroll">
                         <a class="pt active" href="#product-1">
-                            <img src="~/img/giay.jpg" alt="">
+                            <img src="data:image/png;base64,@Model.ImgDaiDien" alt="">
                         </a>
                         <a class="pt" href="#product-2">
-                            <img src="~/img/giay.jpg" alt="">
+                            <img src="data:image/png;base64,@Model.ImgDaiDien" alt="">
                         </a>
                         <a class="pt" href="#product-3">
-                            <img src="~/img/giay.jpg" alt="">
+                            <img src="data:image/png;base64,@Model.ImgDaiDien" alt="">
                         </a>
                         <a class="pt" href="#product-4">
-                            <img src="~/img/giay.jpg" alt="">
+                            <img src="data:image/png;base64,@Model.ImgDaiDien" alt="">
                         </a>
                     </div>
                     <div class="product__details__slider__content">
                         <div class="product__details__pic__slider owl-carousel">
-                            <img data-hash="product-1" class="product__big__img" src="~/img/giay.jpg" alt="">
-                            <img data-hash="product-2" class="product__big__img" src="~/img/giay.jpg" alt="">
-                            <img data-hash="product-3" class="product__big__img" src="~/img/giay.jpg" alt="">
-                            <img data-hash="product-4" class="product__big__img" src="~/img/giay.jpg" alt="">
+                            <img data-hash="product-1" class="product__big__img" src="data:image/png;base64,@Model.ImgDaiDien" alt="">
+                            <img data-hash="product-2" class="product__big__img" src="data:image/png;base64,@Model.ImgDaiDien" alt="">
+                            <img data-hash="product-3" class="product__big__img" src="data:image/png;base64,@Model.ImgDaiDien" alt="">
+                            <img data-hash="product-4" class="product__big__img" src="data:image/png;base64,@Model.ImgDaiDien" alt="">
                         </div>
                     </div>
                 </div>
@@ -70,7 +83,7 @@
             <div class="col-lg-6">
                 <div class="product__details__text">
                     <h3>
-                        GIÀY NIKE ZOOMX INVINCIBLE RUN FK 3 NAM - XANH NAVY
+                        @Model.TenSanPham
                         <div class="rating">
                             <i class='bx bxs-star'></i>
                             <i class='bx bxs-star'></i>
@@ -79,74 +92,75 @@
                             <i class='bx bxs-star'></i>
                             <span>( Đánh giá : 6k )</span>
                         </div>
-                        <div class="product__details__price">
-                            4.990.000₫<span>5.579.000₫</span>
-                        </div>
-                        <div class="product__details__button">
-                            <div class="quantity-heart">    
-                                <div class="quantity">
-                                    <span>Quantity:</span>
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
+                    </h3>
+                    <div class="product__details__price">
+                        <a class="price-display">@Model.GiamGia</a><span class="price-display">@Model.GiaSanpham</spa>
+                    </div>
+                    <div class="product__details__button">
+                        <div class="quantity-heart">
+                            <div class="quantity">
+                                <span>Số lượng:</span>
+                                <div class="pro-qty">
+                                    <input type="text" value="1">
                                 </div>
-                                <a href="#" class="heart-icon"><span class='bx bxs-heart'></span></a>
                             </div>
-                            <div class="buttons">
-                                <a href="#" class="cart-btn"><i class='bx bx-cart'></i>Cho vào giỏ hàng</a>
-                                <a href="#" class="buy-now-btn">Mua ngay</a>
-                            </div>
+                            <a href="#" class="heart-icon"><span class='bx bxs-heart'></span></a>
                         </div>
-                        <div class="product__details__widget">
-                            <ul>
-                                <li>
-                                    <span>Tình trạng:</span>
-                                    <div class="stock__checkbox">
-                                        <label>
-                                            Còn hàng
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span>Chọn màu:</span>
-                                    <div class="color__checkbox">
-                                        <label for="red">
-                                            <input type="radio" name="color__radio" id="red" checked>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label for="black">
-                                            <input type="radio" name="color__radio" id="black">
-                                            <span class="checkmark black-bg"></span>
-                                        </label>
-                                        <label for="grey">
-                                            <input type="radio" name="color__radio" id="grey">
-                                            <span class="checkmark grey-bg"></span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span style="padding-top: 11px;">Size:</span>
-                                    <div class="size__btn">
-                                        <label for="xs-btn" class="active">
-                                            <input type="radio" id="xs-btn">
-                                            xs
-                                        </label>
-                                        <label for="s-btn">
-                                            <input type="radio" id="s-btn">
-                                            s
-                                        </label>
-                                        <label for="m-btn">
-                                            <input type="radio" id="m-btn">
-                                            m
-                                        </label>
-                                        <label for="l-btn">
-                                            <input type="radio" id="l-btn">
-                                            l
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="buttons">
+                            <a href="#" class="cart-btn"><i class='bx bx-cart'></i>Cho vào giỏ hàng</a>
+                            <a href="#" class="buy-now-btn">Mua ngay</a>
                         </div>
+                    </div>
+                    <div class="product__details__widget">
+                        <ul>
+                            <li>
+                                <span>Tình trạng:</span>
+                                <div class="stock__checkbox">
+                                    <label>
+                                        Còn hàng
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Chọn màu:</span>
+                                <div class="color__checkbox">
+                                    <label for="red">
+                                        <input type="radio" name="color__radio" id="red" checked>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label for="black">
+                                        <input type="radio" name="color__radio" id="black">
+                                        <span class="checkmark black-bg"></span>
+                                    </label>
+                                    <label for="grey">
+                                        <input type="radio" name="color__radio" id="grey">
+                                        <span class="checkmark grey-bg"></span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <span style="padding-top: 11px;">Size:</span>
+                                <div class="size__btn">
+                                    <label for="xs-btn" class="active">
+                                        <input type="radio" id="xs-btn">
+                                        xs
+                                    </label>
+                                    <label for="s-btn">
+                                        <input type="radio" id="s-btn">
+                                        s
+                                    </label>
+                                    <label for="m-btn">
+                                        <input type="radio" id="m-btn">
+                                        m
+                                    </label>
+                                    <label for="l-btn">
+                                        <input type="radio" id="l-btn">
+                                        l
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-12">
@@ -161,15 +175,7 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                            <p>
-                                Giày Nike ZoomX Invincible Run FK 3 là siêu phẩm giày thể thao cao cấp nhất của Nike trong năm nay, một mẫu giày khiến bạn không thể rời mắt khi nhìn thấy nó ở bất cứ nơi đâu. Thiết kế đẹp, kiểu dáng đẳng cấp và công nghệ đỉnh cao là những gì bạn có thể nói về Giày Nike ZoomX Invincible Run FK 3.
-                            </p>
-                            <p>
-                                Giày Nike ZoomX Invincible Run FK 3 với khả năng giảm chấn thương tối đa mang lại cho chúng ta cảm giác thoải mái nhất khi chạy bộ hàng ngày. Trải nghiệm phần trên Flyknit thoáng khí và nền tảng chắc chắn của bọt ZoomX nhẹ giúp giảm tác động. Ngoài ra, đế giữa của mẫu này rộng hơn và cao hơn mẫu trước để mang lại sự thoải mái hơn nữa khi được đệm.
-                            </p>
-                            <p>
-                                Với thiết kế và công nghệ đỉnh cao, Giày Nike ZoomX Invincible Run FK 3 chắc chắn là mẫu giày mà bất cứ ai cũng muốn được lên chân và sở hữu nó.
-                            </p>
+                           @Html.Raw(@Model.MoTaSanPham)
                         </div>
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <h6>Dũng</h6>
@@ -198,11 +204,6 @@
                 <div class="product__item">
                     <div class="product__item__pic">
                         <img src="~/img/giay.jpg" alt="">
-                        <ul class="product__item__pic__hover">
-                            <li><a href="~/img/giay.jpg" class="image-popup"><span class='bx bx-expand'></span></a></li>
-                            <li><a href="#"><span class='bx bx-heart'></span></a></li>
-                            <li><a href="#"><span class='bx bx-shopping-bag'></span></a></li>
-                        </ul>
                     </div>
                     <div class="product__item__text">
                         <h6><a href="#">Giày</a></h6>
@@ -221,11 +222,6 @@
                 <div class="product__item">
                     <div class="product__item__pic">
                         <img src="~/img/giay.jpg" alt="">
-                        <ul class="product__item__pic__hover">
-                            <li><a href="~/img/giay.jpg" class="image-popup"><span class='bx bx-expand'></span></a></li>
-                            <li><a href="#"><span class='bx bx-heart'></span></a></li>
-                            <li><a href="#"><span class='bx bx-shopping-bag'></span></a></li>
-                        </ul>
                     </div>
                     <div class="product__item__text">
                         <h6><a href="#">Giày</a></h6>
@@ -244,11 +240,6 @@
                 <div class="product__item">
                     <div class="product__item__pic">
                         <img src="~/img/giay.jpg" alt="">
-                        <ul class="product__item__pic__hover">
-                            <li><a href="~/img/giay.jpg" class="image-popup"><span class='bx bx-expand'></span></a></li>
-                            <li><a href="#"><span class='bx bx-heart'></span></a></li>
-                            <li><a href="#"><span class='bx bx-shopping-bag'></span></a></li>
-                        </ul>
                     </div>
                     <div class="product__item__text">
                         <h6><a href="#">Giày</a></h6>
@@ -267,11 +258,6 @@
                 <div class="product__item">
                     <div class="product__item__pic">
                         <img src="~/img/giay.jpg" alt="">
-                        <ul class="product__item__pic__hover">
-                            <li><a href="~/img/giay.jpg" class="image-popup"><span class='bx bx-expand'></span></a></li>
-                            <li><a href="#"><span class='bx bx-heart'></span></a></li>
-                            <li><a href="#"><span class='bx bx-shopping-bag'></span></a></li>
-                        </ul>
                     </div>
                     <div class="product__item__text">
                         <h6><a href="#">Giày</a></h6>
@@ -289,3 +275,23 @@
         </div>
     </div>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const prices = document.querySelectorAll('.price-display');
+        prices.forEach(price => {
+            let priceText = price.textContent.trim();
+            let priceValue = parseInt(priceText.replace(/\D/g, '')); // Remove any non-digit characters
+
+            if (priceValue >= 1000000) {
+                // Format as x.000.000
+                let millions = Math.floor(priceValue / 1000000);
+                let thousands = Math.floor((priceValue % 1000000) / 1000);
+                price.textContent = `${millions}.${thousands.toString().padStart(3, '0')}.000 đ`;
+            } else {
+                // Format as x.000
+                let thousands = priceValue / 1000;
+                price.textContent = `${thousands.toFixed(3).replace('.', '.')} đ`;
+            }
+        });
+    });
+</script>

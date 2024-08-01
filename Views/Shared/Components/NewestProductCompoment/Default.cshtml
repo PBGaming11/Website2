@@ -1,15 +1,19 @@
-﻿@model IEnumerable<SanPham>
+﻿@model IEnumerable<Website.Models.SanPham> // Ensure this matches your project's structure
 
-@foreach (var item in Model.Take(3))
+@foreach (var item in Model)
 {
-    <a href="#" class="latest-product__item">
-        <div class="latest-product__item__pic">
-            <img src="data:image/png;base64,@item.ImgDaiDien" alt="@item.TenSanPham" />
-        </div>
-        <div class="latest-product__item__text">
-            <h6>@item.TenSanPham</h6>
-            <span class="price-displays">@item.GiamGia</span>
-        </div>
-    </a>
-}
+    <div class="latest-product__slider__item">
+        <a asp-action="Index" asp-controller="product_detail" asp-route-id="@item.IdSanPham" class="latest-product__item">
+            <div class="latest-product__item__pic">
+                <img src="data:image/png;base64,@item.ImgDaiDien" alt="">
+            </div>
+            <div class="latest-product__item__text">
+                <h6 class="product-name">@item.TenSanPham</h6>
+            </div>
+            <div class="latest-product__item__text">
+                <span class="price-display">@item.GiamGia</span>
+            </div>
+        </a>
+    </div>
 
+}
